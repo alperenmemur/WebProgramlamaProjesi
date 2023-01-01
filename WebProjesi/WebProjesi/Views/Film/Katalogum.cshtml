@@ -1,0 +1,63 @@
+﻿@model WebProjesi.Models.KatalogveFilm
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@{
+    ViewData["Title"] = "Kataloğum";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-4 pl-4">
+            <h4 class="bg-dark w-75 text-center pb-2 rounded pl-2 pr-2 pt-2 text-white">Kataloğumdaki Film Listesi</h4>
+
+        </div>
+        <div class="col-6 text-right">
+
+        </div>
+    </div>
+    <br />
+
+
+    <div class="card-group">
+        @foreach (var i in Model.kataloglar)
+        {
+
+
+            @foreach (var y in Model.filmler)
+            {
+                if (i.filmNumara == y.Id)
+                {
+
+                  
+
+                        <div class="col-sm-4">
+                            <div class="card cardFilm">
+                                <img src="@y.filmResimURL" class="kartresim card-img " alt="...">
+                                <div class="card-body overflow-auto ">
+                                    <a asp-action="Details" asp-controller="film" asp-route-Id="@y.Id" class="card-title font-weight-bolder text-primary ">@y.filmIsmi</a>
+                                    <hr />
+                                    <p class="card-text text-light">@y.filmAciklamasi</p>
+
+                                </div>
+                                <div class="pb-2 pr-2 align-self-end">
+                                    <a asp-action="KatalogSil" asp-controller="film" asp-route-Id="@y.Id" class="btn w-100 btn-dark text-light">Katalogdan Sil</a>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        }
+
+
+                        }
+
+                        }
+                    </div>
+
+
+                </div>

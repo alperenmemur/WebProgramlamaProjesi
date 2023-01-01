@@ -1,0 +1,48 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Kaydol";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="row align-content-center">
+    <div class="col-md-4 offset-4 bg-dark">
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <h4 class="text-white text-center">Yeni hesap oluşturun.</h4>
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group text-white">
+                <label asp-for="Input.kullaniciAdi">Kullanıcı Adı</label>
+                <input asp-for="Input.kullaniciAdi" class="form-control" />
+                <span asp-validation-for="Input.kullaniciAdi" class="text-danger"></span>
+            </div>
+            <div class="form-group text-white">
+                <label asp-for="Input.Email">Email</label>
+                <input asp-for="Input.Email" class="form-control" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group text-white">
+                <label asp-for="Input.Password">Şifre</label>
+                <input asp-for="Input.Password" class="form-control" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group text-white">
+                <label asp-for="Input.ConfirmPassword">Şifrenizi onaylayın</label>
+                <input asp-for="Input.ConfirmPassword" class="form-control" />
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Kaydol</button>
+
+        </form>
+        <br />
+    </div>
+    <div class="col-md-6 col-md-offset-2">
+        
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

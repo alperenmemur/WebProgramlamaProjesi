@@ -1,0 +1,66 @@
+﻿
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
+
+@model IEnumerable<WebProjesi.Models.Film>
+@{
+    ViewData["Title"] = "Admin Panel";
+    Layout = "/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-4 pl-4">
+            <h4 class="bg-dark w-75 text-center pb-2 rounded pl-2 pr-2 pt-2 text-white">Film Listesi</h4>
+
+        </div>
+
+        <div class="col-6 text-right">
+            <a asp-controller="Film" asp-action="Create" class="btn btn-dark ">Yeni Film Ekle</a>
+        </div>
+    </div>
+    <div class="row pt-4">
+        <div class="col-3 align-self-end">
+            <a asp-controller="Film" asp-action="filmAksiyon" class="btn btn-dark ">Aksiyon</a>
+        </div>
+        <div class="col-3">
+            <a asp-controller="Film" asp-action="filmMacera" class="btn btn-dark ">Macera</a>
+        </div>
+        <div class="col-3">
+            <a asp-controller="Film" asp-action="filmBKurgu" class="btn btn-dark ">Bilim Kurgu</a>
+        </div>
+        <div class="col-3">
+            <a asp-controller="Film" asp-action="filmRomantik" class="btn btn-dark ">Romantik</a>
+        </div>
+    </div>
+    <br />
+
+
+    <div class="card-group">
+        @foreach (var i in Model)
+        {
+            <div class="col-sm-4 ">
+                <div class="card cardFilm">
+                    <img src="@i.filmResimURL" class="card-img-top kartresim" alt="...">
+                    <div class="card-body overflow-auto">
+                        <a asp-action="Details" asp-controller="film" asp-route-Id="@i.Id" class="card-title text-capitalize font-weight-bolder text-primary ">@i.filmIsmi</a>
+                        <hr />
+                        <p class="card-text overflow-auto text-capitalize text-light">@i.filmAciklamasi</p>
+                        <br />
+
+
+                    </div>
+                    <div class="align-self-end">
+                        <a asp-controller="Film" asp-action="Update" asp-route-Id="@i.Id" class="btn buton ml-2 mb-2  btn-info text-white " style="margin-top:auto">Düzenle</a>
+
+                        <a asp-controller="Film" asp-action="Delete" asp-route-Id="@i.Id" class="btn btn-danger ml-2 mb-2 w-auto mr-2  text-white" style="margin-top:auto">Sil</a>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+
+
+</div>

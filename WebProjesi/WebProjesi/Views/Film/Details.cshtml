@@ -1,0 +1,166 @@
+﻿@model WebProjesi.Models.DetayveYorum
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@{
+    ViewData["Title"] =Model.film.filmIsmi;
+    
+}
+
+<br />
+
+<input asp-for="film.Id" hidden />
+
+
+
+
+<div>
+    <div class="align-self-center  ">
+
+        <h4 class="bg-dark w-25 text-center pb-2 rounded pl-2 pr-2 pt-2 text-white">Film Detayları</h4>
+
+    </div>
+    <div class="row">
+
+
+        <div class="col card text-white">
+            <div class="card-body overflow-auto">
+                <div class="row no-gutters">
+                    <div class="col-sm-4">
+                        <img src="@Model.film.filmResimURL" class="card-img kartresim" alt="...">
+                    </div>
+                    <div class="col">
+                        <div class="card-body">
+                            <h2 class="card-title text-capitalize text-center">@Model.film.filmIsmi</h2>
+                            <h3 class="card-title text-capitalize text-center"> @Model.film.filmTuru</h3>
+                            <br />
+
+                            <h4 class="card-text text-capitalize pl-4 pr-4">@Model.film.filmAciklamasi</h4>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+    </div>
+</div>
+<br />
+
+<div class=" text-white">
+    <div class="align-self-center">
+        <h4 class="bg-dark w-25 text-center pb-2 rounded pl-2 pr-2 pt-2 text-white">Filme Yapılan Yorumlar</h4>
+    </div>
+    
+
+    @if (Model.FilmYorumlar.Count() != 0)
+    {
+
+
+
+
+
+        @foreach (var i in Model.FilmYorumlar)
+        {
+
+
+            <div class="card card-yorum text-white p-2">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="user d-flex flex-row align-items-center">
+                        <img src="https://i.pinimg.com/736x/75/34/53/753453e3247505c8880956ef39691960.jpg" width="30" class="user-img rounded-circle mr-2">
+                        <span>
+                            <small class="font-weight-bold  text-primary">@i.Kullanici</small>
+                            <br />
+                            <a class="font-weight-bold">@i.yorumBaslik</a>
+                            <br />
+                            <small>@i.Yorum</small>
+                            <br />
+
+
+                        </span>
+                    </div>
+                    @if (User.Identity.Name == i.Kullanici || User.IsInRole("Admin"))
+                    {
+                        <div class="align-self-end p-2">
+                            <a asp-controller="film" asp-action="YorumSil" asp-route-id="@i.Id" class="font-weight-bold  btn btn-danger">x</a>
+                        </div>
+                    }
+                </div>
+
+            </div>
+
+
+
+
+
+        }
+
+
+
+
+
+    }
+</div>
+
+
+
+
+
+
+<
+@if (User.IsInRole("Kullanici") || User.IsInRole("Admin"))
+{
+<form method="post" asp-controller="film" asp-action="Details">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="align-self-center  ">
+
+        <h4 class="bg-dark w-25 text-center pb-2 rounded pl-2 pr-2 pt-2 text-white">Sende Yorum Yap!</h4>
+
+    </div>
+
+
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th class="text-center bg-light">
+                    Yorum Yapın
+                </th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <textarea asp-for="yorum.yorumBaslik" placeholder="Başlık" name="yorumBaslik" class="form-control" required></textarea>
+                    <textarea maxlength="150" asp-for="yorum.Yorum" placeholder="Yorum" name="yorum" class="form-control" required></textarea>
+                    <span asp-validation-for="yorum.Yorum" class="text-danger"></span>
+                </td>
+            </tr>
+        </tbody>
+
+
+
+    </table>
+
+    <div class="align-self-center">
+
+        <input type="submit" class="btn btn-success  w-25" value="Yolla" />
+        
+
+    </div>
+
+</form>
+}
+
+
+
+
+
+

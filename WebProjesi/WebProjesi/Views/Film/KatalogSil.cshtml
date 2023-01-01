@@ -1,0 +1,64 @@
+﻿@model WebProjesi.Models.Film
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@{
+    ViewData["Title"] = "Katalogdan Sil";
+    
+}
+
+<div class="col-3  ">
+
+    <h4 class="bg-dark text-center pb-2 rounded pl-2 pr-2 pt-2 text-white">Film Detayları</h4>
+
+</div>
+<br />
+
+<form method="post" asp-action="KatalogSil">
+
+    <input asp-for="Id" hidden />
+
+
+
+
+    <div>
+        <div class="row">
+
+
+            <div class="col cardFilm card text-white">
+                <div class="card-body">
+                    <div class="row no-gutters">
+                        <div class="col-sm-4">
+                            <img src="@Model.filmResimURL" class="card-img kartresim" alt="...">
+                        </div>
+                        <div class="col">
+                            <div class="card-body">
+                                <h2 class="card-title text-center">@Model.filmIsmi</h2>
+                                <h3 class="card-title text-center"> @Model.filmTuru</h3>
+                                <br />
+                                <h4 class="card-text pl-4 pr-4">@Model.filmAciklamasi</h4>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="align-self-end">
+                    <input type="submit" class="btn btn-info  w-100" value="Katalogdan Sil" />
+                </div>
+                <br />
+
+            </div>
+
+        </div>
+    </div>
+    <br />
+
+
+</form>
+
+
+

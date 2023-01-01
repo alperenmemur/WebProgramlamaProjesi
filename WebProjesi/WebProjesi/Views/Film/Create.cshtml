@@ -1,0 +1,77 @@
+﻿@model WebProjesi.Models.Film
+@{
+    ViewData["Title"] = "Film Ekle";
+    Layout = "/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<form method="post" asp-action="Create">
+
+    <h1 class="text-light text-center bg-dark">Film Ekle</h1>
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <h3 class="text-center">Film Kategorisi</h3>
+    <select class=" bg-light border-dark text-dark form-control" asp-for="filmTuru" id="isim">
+        <option value="Aksiyon">
+            Aksiyon
+        </option>
+        <option value="Bilim Kurgu">
+            Bilim Kurgu
+        </option>
+        <option value="Macera">
+            Macera
+        </option>
+        <option value="Romantik">
+            Romantik
+        </option>
+    </select>
+    <br />
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th class="text-center bg-light">
+                    Film Adı
+                </th>
+                
+                <th class="text-center bg-light">
+                    Film Aciklamasi
+                </th>
+                <th class="text-center bg-light">
+                    Resim URL
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>
+                    <input asp-for="filmIsmi" width="100" type="text" id="isim" class="form-control" />
+                    <span asp-validation-for="filmIsmi" class="text-danger"></span>
+                </td>
+
+
+                <td>
+                    <input asp-for="filmAciklamasi" width="100" type="text" id="isim" class="form-control" />
+                    <span asp-validation-for="filmAciklamasi" class="text-danger"></span>
+                </td>
+                <td>
+                    <input asp-for="filmResimURL" width="100" type="text" id="isim" class="form-control" />
+                    <span asp-validation-for="filmResimURL" class="text-danger"></span>
+                </td>
+            </tr>
+        </tbody>
+
+
+
+    </table>
+
+    <div class="offset-4">
+
+        <input type="submit" class="btn btn-info  w-25" value="Ekle" />
+        <a asp-action="Index" class="btn btn-danger  w-25">Geri Git</a>
+
+    </div>
+
+</form>
+
+

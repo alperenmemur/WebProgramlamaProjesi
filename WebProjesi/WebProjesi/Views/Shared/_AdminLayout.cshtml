@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WebProjesi</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <link href="~/css/StyleSheet.css" rel="stylesheet" />
+    
+    <script src="~/lib/bootstrap/dist/js/stil.js"></script>
+
+
+</head>
+<body>
+
+    <nav class="navbar topbar navbar-expand-sm navbar-toggleable-sm   border-bottom box-shadow ">
+        <div class="container">
+            <a class="navbar-brand sari  logo" id="logo" asp-area="" asp-controller="Film" asp-action="Giris">Good2Watch</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse justify-content-end">
+                <ul class="item nav navbar-nav flex-grow-1 navbar-right">
+                    <partial>
+                        @Html.Partial("_LoginPartial.cshtml")
+                    </partial>
+
+
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <div id="mySidebar" class="sidebar ">
+        <br />
+        <a class="text-white"><h3>Good2Watch</h3></a>
+        <a class="text-white"><h3>Admin Paneli</h3></a>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <br />
+        <br />
+        <a asp-action="Index" asp-controller="Film">Filmler'i Düzenle</a>
+        <br />
+        <a asp-action="kullanicifilmler" asp-controller="Film">Admin Panelinden Çık</a>
+
+    </div>
+
+
+
+
+    <div id="main">
+        <button class="openbtn" id="buton" onclick="openNav()">☰</button>
+        <div class="container" id="content">
+            <p>@RenderBody()</p>
+            &nbsp;
+        </div>
+        &nbsp;
+    </div>
+
+
+
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 Güz Dönemi - Web Programlama Projesi B201210390 -- G211210377 <a asp-area="" asp-controller="Film" asp-action="İletisim">İletişim</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

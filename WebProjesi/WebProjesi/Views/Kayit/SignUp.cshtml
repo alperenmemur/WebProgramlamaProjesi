@@ -1,0 +1,62 @@
+﻿@model WebProjesi.Models.Kullanicilar
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<form method="post" asp-action="SignUp">
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+   
+    <div class="offset-4">
+        <h1 class="text-light text-center bg-dark" style="width:50%">Kaydol</h1>
+        <table class="table table-bordered table-striped align-items-center" style="width:50%">
+            <thead>
+                <tr>
+                    <td class="bg-dark text-light text-md-center">
+                        <a>Kullanıcı Adı</a>
+                    </td>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input asp-for="kullaniciAdi" width="100" placeholder="kullanıcı adı" type="text" id="isim" class="form-control" />
+                        <span asp-validation-for="kullaniciAdi" class="text-danger"></span>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="bg-dark text-light text-md-center">
+                        <a>Şifre</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="password" asp-for="sifre" width="100" placeholder="şifre" id="isim" class="form-control" />
+                        <span asp-validation-for="sifre" class="text-danger"></span>
+                        
+
+                    </td>
+
+                </tr>
+            </tbody>
+
+
+
+        </table>
+    </div>
+    
+
+    <div class="offset-4">
+
+        <input type="submit" class="btn btn-success  w-25" value="Kaydol" />
+        <a asp-action="Index" asp-controller="Film" class="btn btn-danger  w-25">Geri Git</a>
+
+    </div>
+
+</form>
+
+

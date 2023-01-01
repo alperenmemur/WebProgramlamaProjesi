@@ -1,0 +1,41 @@
+﻿@model WebProjesi.Models.FilmYorumlar
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@{
+    ViewData["Title"] = "Yorumu Sil";
+    
+}
+<form method="post" asp-action="YorumSil">
+
+    <h1 class="text-light text-center bg-dark">Yorum Silme</h1>
+    <input asp-for="Id" hidden />
+
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th class="text-center bg-light">
+                    Yorumu Gerçekten Silmek İstiyor Musunuz?
+                </th>
+               
+            </tr>
+        </thead>
+        
+
+
+
+    </table>
+
+    <div class="offset-4">
+
+        <input type="submit" class="btn btn-info  w-25" value="Sil" />
+        <a asp-action="Index" class="btn btn-danger  w-25">Geri Git</a>
+
+    </div>
+
+</form>
+
+
